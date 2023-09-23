@@ -51,8 +51,6 @@ if (isset($_POST['vote'])) {
 				</a>
 
 
-
-
 			</div>
 		</div>
 	</div>
@@ -63,7 +61,7 @@ if (isset($_POST['vote'])) {
 				<font color="white" size="6">"Official Ballot"</font>
 			</div>
 			<div class="back">
-				<a class="btn btn-info" id="bak" href="voting.php"><i class="icon-arrow-left icon-large"></i>&nbsp;Back</a>
+				<a class="btn btn-info" id="bak" href="voting3.php"><i class="icon-arrow-left icon-large"></i>&nbsp;Back</a>
 			</div>
 		</div>
 
@@ -222,34 +220,7 @@ if (isset($_POST['vote'])) {
 			</div>
 
 
-			<?php
-			if (isset($_POST['vote'])) {
-				$gov = $_POST['gov'];
-				mysqli_query($conn, "insert into votes (CandidateID)values('$gov')") or die(mysqli_error());
 
-				$vice = $_POST['vice'];
-				mysqli_query($conn, "insert into votes (CandidateID)values('$vice')") or die(mysqli_error());
-
-				$rep1 = $_POST['rep1'];
-				mysqli_query($conn, "insert into votes (CandidateID)values('$rep1')") or die(mysqli_error());
-
-
-				$rep2 = $_POST['rep2'];
-				mysqli_query($conn, "insert into votes (CandidateID)values('$rep2')") or die(mysqli_error());
-
-				$rep3 = $_POST['rep3'];
-				mysqli_query($conn, "insert into votes (CandidateID)values('$rep3')") or die(mysqli_error());
-
-
-				mysqli_query($conn, "update voters set Status='Voted' where VoterID='$session_id'") or die(mysqli_error());
-
-			?>
-
-			<?php
-
-				_redirect('thankyou.php');
-			}
-			?>
 
 			<div class="hero-body-456">
 				<div class="ok_vote">
@@ -276,7 +247,7 @@ if (isset($_POST['vote'])) {
 
 
 		</form>
-		<?php include('footer.php') ?>
+		<?php include('footer1.php') ?>
 	</div>
 
 </body>
