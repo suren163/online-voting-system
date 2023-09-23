@@ -21,7 +21,6 @@ include('dbcon.php');
 							<li class=""><a href="voter_list.php"><i class="icon-align-justify icon-large"></i>Voters List</a></li>
 							<li class="active"><a href="canvassing_report.php"><i class="icon-book icon-large"></i>Canvassing Report</a></li>
 							<li><a href="History.php"><i class="icon-table icon-large"></i>History Log</a>
-
 							<li>....</li>
 						</ul>
 						<form class="navbar-form pull-right">
@@ -32,17 +31,19 @@ include('dbcon.php');
 							<a class="btn btn-danger" id="logout" data-toggle="modal" href="#myModal"><i class="icon-off"></i>&nbsp;Logout</a>
 							<div class="modal hide fade" id="myModal">
 								<div class="modal-header">
-
-									<div class="modal-body">
-										<p>
-											<font color="gray">Are You Sure you Want to LogOut?</font>
-										</p>
-									</div>
-									<div class="modal-footer">
-										<a href="#" class="btn" data-dismiss="modal">No</a>
-										<a href="logout.php" class="btn btn-primary">Yes</a>
-									</div>
+									<button type="button" class="close" data-dismiss="modal">�</button>
+									<h3> </h3>
 								</div>
+								<div class="modal-body">
+									<p>
+										<font color="gray">Are You Sure you Want to LogOut?</font>
+									</p>
+								</div>
+								<div class="modal-footer">
+									<a href="#" class="btn" data-dismiss="modal">No</a>
+									<a href="logout.php" class="btn btn-primary">Yes</a>
+								</div>
+							</div>
 
 						</form>
 					</div>
@@ -58,13 +59,13 @@ include('dbcon.php');
 						<li><a href="C_chairman.php">
 								<font color="white">Chairman</font>
 							</a></li>
-						<li><a href="C_vice-chairman.php">
+						<li class="active"><a href="C_vice-chairman.php">
 								<font color="white">Vice-Chairman</font>
 							</a></li>
 						<li><a href="C_1st_year.php">
 								<font color="white">1st Year Representative</font>
 							</a></li>
-						<li class="active"><a href="C_2nd_year.php">
+						<li><a href="C_2nd_year.php">
 								<font color="white">2nd Year Representative</font>
 							</a></li>
 						<li><a href="C_3rd_year.php">
@@ -75,7 +76,7 @@ include('dbcon.php');
 					</ul>
 				</div>
 				<?php
-				$query = mysqli_query($conn, "select  * from candidate");
+				$query = mysqli_query($conn, "select  * from candidate where Position='Governor'");
 				$row = mysqli_fetch_array($query);
 				$id_excel = $row['CandidateID'];
 				?>
@@ -104,7 +105,7 @@ include('dbcon.php');
 							</thead>
 							<tbody>
 
-								<?php $candidate_query = mysqli_query($conn, "select  * from candidate where Position='2nd Year Representative'");
+								<?php $candidate_query = mysqli_query($conn, "select  * from candidate where Position='Vice-Governor'");
 								while ($candidate_rows = mysqli_fetch_array($candidate_query)) {
 									$id = $candidate_rows['CandidateID'];
 									$fl = $candidate_rows['FirstName'];

@@ -11,6 +11,7 @@ include('dbcon.php');
 
 		<div class="home_body">
 
+
 			<div class="navbar">
 				<div class="navbar-inner">
 					<div class="container">
@@ -22,7 +23,6 @@ include('dbcon.php');
 							<li class=""><a href="voter_list.php"><i class="icon-align-justify icon-large"></i>Voters List</a></li>
 							<li><a href="canvassing_report.php"><i class="icon-book icon-large"></i>Canvassing Report</a></li>
 							<li><a href="History.php"><i class="icon-table icon-large"></i>History Log</a>
-
 						</ul>
 						<form class="navbar-form pull-right">
 							<?php $result = mysqli_query($conn, "select * from users where User_id='$id_session'");
@@ -31,6 +31,11 @@ include('dbcon.php');
 							<font color="white">Welcome:<i class="icon-user-md"></i><?php echo $row['User_Type']; ?></font>
 							<a class="btn btn-danger" id="logout" data-toggle="modal" href="#myModal"><i class="icon-off"></i>&nbsp;Logout</a>
 							<div class="modal hide fade" id="myModal">
+								<div class="modal-body">
+									<p>
+										<font color="gray">Are You Sure you Want to LogOut?</font>
+									</p>
+								</div>
 								<div class="modal-footer">
 									<a href="#" class="btn" data-dismiss="modal">No</a>
 									<a href="logout.php" class="btn btn-primary">Yes</a>
@@ -52,10 +57,10 @@ include('dbcon.php');
 						<li><a href="candidate_for_chairman.php">
 								<font color="white">Chairman</font>
 							</a></li>
-						<li><a href="candidate_for_vice-chairman.php">
+						<li class="active"><a href="candidate_for_vice-chairman.php">
 								<font color="white">Vice-Chairman</font>
 							</a></li>
-						<li class="active"><a href="1st_year.php">
+						<li><a href="1st_year.php">
 								<font color="white">1st Year Representative</font>
 							</a></li>
 						<li><a href="2nd_year.php">
@@ -75,6 +80,7 @@ include('dbcon.php');
 
 				<div class="pagination">
 					<ul>
+
 
 						<li><a href="new_candidate.php">
 								<font color="white"><i class="icon-plus icon-large"></i>Add Candidates</font>
@@ -100,7 +106,7 @@ include('dbcon.php');
 							</thead>
 							<tbody>
 
-								<?php $candidate_query = mysqli_query($conn, "select  * from candidate where Position='1st Year Representative'");
+								<?php $candidate_query = mysqli_query($conn, "select  * from candidate where Position='Vice-Governor'");
 								while ($candidate_rows = mysqli_fetch_array($candidate_query)) {
 									$id = $candidate_rows['CandidateID'];
 									$fl = $candidate_rows['FirstName'];
@@ -113,7 +119,7 @@ include('dbcon.php');
 										<td><?php echo $candidate_rows['Party']; ?></td>
 										<td align="center"><?php echo $candidate_rows['Year']; ?></td>
 										<td align="center"><img class="pic" width="40" height="30" src="<?php echo $candidate_rows['Photo']; ?>" border="0" onmouseover="showtrail('<?php echo $candidate_rows['Photo']; ?>','<?php echo $candidate_rows['FirstName'] . " " . $candidate_rows['LastName']; ?> ',200,5)" onmouseout="hidetrail()"></a></td>
-										<td width="240" align="center">
+										<td align="center">
 											<a class="btn btn-Success" href="edit_candidate.php<?php echo '?id=' . $id; ?>"><i class="icon-edit icon-large"></i>&nbsp;Edit</a>&nbsp;
 											<a class="btn btn-info" data-toggle="modal" href="#<?php echo $id; ?>"><i class="icon-list icon-large"></i>&nbsp;View</a>
 											<a class="btn btn-danger1" id="<?php echo $id; ?>"><i class="icon-trash icon-large"></i>&nbsp;Delete</a>&nbsp;
